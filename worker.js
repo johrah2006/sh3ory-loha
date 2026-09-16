@@ -206,15 +206,18 @@ export default {
         }
 
         const prompt =
-          "Create an original beautiful fine-art exhibition painting inspired by feelings about Saudi Arabia and Saudi National Day 96. " +
-          "Interpret emotions visually, elegant Saudi identity, national pride, belonging, hope, ambition, gratitude and a bright future, " +
-          "sophisticated contemporary Saudi cultural atmosphere, green and white visual atmosphere. " +
-          "NO words, letters, Arabic text, numbers, logos, watermark or readable signage. " +
+          "Create a completely original fine-art exhibition painting inspired by the participant's feelings about Saudi Arabia and Saudi National Day 96. " +
+          "Use a sophisticated Saudi visual identity through symbolism, atmosphere, architecture, palm trees, landscapes, heritage forms and a hopeful modern future. " +
+          "Translate the emotions into composition, lighting, color, movement and artistic mood rather than writing them literally. " +
+          "Museum-quality contemporary painting, elegant brushwork, rich depth, refined composition, emotionally expressive, unique artwork, not a stock photo, not a poster, not a graphic design. " +
+          "ABSOLUTELY NO TEXT OF ANY KIND: no Arabic letters, no English letters, no words, no numbers, no captions, no signs, no banners, no logos, no watermark, no calligraphy, no readable symbols. " +
+          "Do not depict the Saudi flag because it contains writing; use abstract green and white national color inspiration instead. " +
           "Feelings: " + feelings + ". Selected emotions: " + chips;
-const result = await env.AI.run(MODEL,{
-  prompt:prompt,
-  steps:4
-});
+
+        const result = await env.AI.run(MODEL,{
+          prompt:prompt,
+          steps:4
+        });
 
         if(!result || !result.image){
           throw new Error("لم تُرجع خدمة الذكاء الاصطناعي صورة");
