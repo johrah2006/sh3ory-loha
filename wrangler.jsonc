@@ -2,7 +2,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "lingering-sky-5b08",
   "main": "worker.js",
-  "compatibility_date": "2026-09-15",
+  "compatibility_date": "2026-09-16",
   "ai": {
     "binding": "AI"
   }
