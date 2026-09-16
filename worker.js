@@ -211,12 +211,10 @@ export default {
           "sophisticated contemporary Saudi cultural atmosphere, green and white visual atmosphere. " +
           "NO words, letters, Arabic text, numbers, logos, watermark or readable signage. " +
           "Feelings: " + feelings + ". Selected emotions: " + chips;
-
-        const result = await env.AI.run(MODEL,{
-          prompt:prompt,
-          steps:4,
-          seed:Math.floor(Math.random()*1000000000)
-        });
+const result = await env.AI.run(MODEL,{
+  prompt:prompt,
+  steps:4
+});
 
         if(!result || !result.image){
           throw new Error("لم تُرجع خدمة الذكاء الاصطناعي صورة");
