@@ -53,11 +53,9 @@ No written words, no logos, no watermarks, no generic foreign city,
 no distorted architecture, no text inside the image.
 `;
 
-const result = await env.AI.run(MODEL, {
+const result=await env.AI.run(MODEL,{
   prompt: prompt,
-  steps: 4,
-  width: 1024,
-  height: 1024
+  steps: 4
 }); 
       if(!result||!result.image)throw Error("خدمة الصور لم تُرجع صورة. تحققي من سجل التنفيذ في Cloudflare.");
       return Response.json({image:"data:image/jpeg;base64,"+result.image});
