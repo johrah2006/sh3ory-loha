@@ -36,13 +36,29 @@ export default {async fetch(request,env){
         camera:{angle:"eye level",distance:"wide shot",focus:"deep focus",lens:"35mm","f-number":"f/5.6",ISO:200},
         effects:["subtle film grain","soft bloom","natural atmospheric depth"]
       };
-      const form=new FormData();
-      form.append("prompt",JSON.stringify(promptObj));
-      form.append("width","1024");
-      form.append("height","1024");
-      const formRequest=new Request("http://dummy",{method:"POST",body:form});
-      const contentType=formRequest.headers.get("content-type");
-      const result=await env.AI.run("@cf/black-forest-labs/flux-2-dev",{multipart:{body:formRequest.body,contentType:contentType}});
+     const prompt = `
+Create a beautiful original photorealistic Saudi National Day 96 artwork inspired directly by these feelings: ${feelings}.
+Selected emotions: ${chips || "pride, belonging and joy"}.
+
+The artwork must unmistakably represent Saudi Arabia and Saudi National Day.
+Show authentic Saudi heritage architecture, Najdi mud-brick buildings, date palms,
+modern Riyadh skyline in the distance, elegant emerald green and white lighting,
+joyful national celebration and tasteful fireworks.
+
+Make the emotions visible through the atmosphere, composition, lighting and visual storytelling.
+Premium Saudi national campaign photography, cinematic, realistic, elegant, culturally authentic,
+high detail, beautiful composition.
+
+No written words, no logos, no watermarks, no generic foreign city,
+no distorted architecture, no text inside the image.
+`;
+
+const result = await env.AI.run(MODEL, {
+  prompt: prompt,
+  steps: 4,
+  width: 1024,
+  height: 1024
+}); 
       if(!result||!result.image)throw Error("خدمة الصور لم تُرجع صورة. تحققي من سجل التنفيذ في Cloudflare.");
       return Response.json({image:"data:image/jpeg;base64,"+result.image});
     }catch(e){return Response.json({error:e&&e.message?e.message:"حدث خطأ أثناء إنشاء اللوحة"},{status:500});}
