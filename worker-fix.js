@@ -36,22 +36,34 @@ export default {async fetch(request,env){
         camera:{angle:"eye level",distance:"wide shot",focus:"deep focus",lens:"35mm","f-number":"f/5.6",ISO:200},
         effects:["subtle film grain","soft bloom","natural atmospheric depth"]
       };
-     const prompt = `
-Create a beautiful original photorealistic Saudi National Day 96 artwork inspired directly by these feelings: ${feelings}.
-Selected emotions: ${chips || "pride, belonging and joy"}.
+    const prompt = `
+Create a beautiful original Saudi National Day artwork that visually translates the participant's feelings into a unique scene.
 
-The artwork must unmistakably represent Saudi Arabia and Saudi National Day.
-Show authentic Saudi heritage architecture, Najdi mud-brick buildings, date palms,
-modern Riyadh skyline in the distance, elegant emerald green and white lighting,
-joyful national celebration and tasteful fireworks.
+Participant feelings: ${feelings}
+Selected emotions: ${chips || "pride, belonging, hope"}
 
-Make the emotions visible through the atmosphere, composition, lighting and visual storytelling.
-Premium Saudi national campaign photography, cinematic, realistic, elegant, culturally authentic,
-high detail, beautiful composition.
+The image must tell a visual story based on the feelings written by the participant, not simply repeat a generic Saudi city scene.
 
-No written words, no logos, no watermarks, no generic foreign city,
-no distorted architecture, no text inside the image.
-`;
+If the feeling is pride or honor: show a majestic Saudi flag, palm tree and crossed swords, heritage architecture, achievements and a powerful dignified composition.
+
+If the feeling is belonging or love of الوطن: show Saudi people and families together, authentic Saudi culture, community, warmth, the green and white national identity.
+
+If the feeling is hope: show a beautiful sunrise over Saudi Arabia, a young Saudi person looking toward a bright horizon, green landscapes and the Saudi flag.
+
+If the feeling is ambition or future: show young Saudi innovators, modern Riyadh, futuristic architecture, technology, sustainability and a bright future.
+
+If the feeling is joy or celebration: show Saudi families celebrating National Day with flags, elegant lights and fireworks.
+
+If the feeling is heritage: show Najdi architecture, traditional Saudi clothing, palm trees, Arabian culture and historical atmosphere.
+
+Blend the selected feelings naturally into the composition. Every generated image must have a different visual story and composition.
+
+Saudi identity should be clear through the green and white colors, Saudi flag, palm tree, crossed swords, Saudi people, heritage and modern Saudi architecture.
+
+Premium cinematic fine-art photography, photorealistic, emotionally powerful, elegant composition, realistic details, beautiful lighting, high quality.
+
+Do not repeat the same city skyline, mosque and fireworks composition. Do not add fireworks unless the feeling is celebration or joy. No written words, no logos, no watermark, no distorted faces or architecture.
+`; 
 
 const result=await env.AI.run(MODEL,{
   prompt: prompt,
